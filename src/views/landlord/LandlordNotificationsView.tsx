@@ -1,20 +1,33 @@
 import React from 'react';
 import { useData } from '../../context/DataContext';
-import { Bell, CheckCircle2 } from 'lucide-react';
+import { Bell, CheckCircle2, CheckCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const LandlordNotificationsView: React.FC = () => {
-  const { notifications, markNotificationAsRead } = useData();
+  const { notifications, markNotificationAsRead, markAllNotificationsAsRead } = useData();
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
     <div className="p-6 sm:p-8 space-y-6 max-w-4xl mx-auto">
-      <div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1C1C1E] dark:text-white tracking-tight">
-          Landlord Notifications ({notifications.length})
-        </h1>
-        <p className="text-xs sm:text-sm text-[#6B7280] dark:text-[#9CA3AF] mt-1">
-          Direct alerts on new tenant applications, messages, and listing status.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1C1C1E] dark:text-white tracking-tight">
+            Landlord Notifications {unreadCount > 0 ? `(${unreadCount} Unread)` : ''}
+          </h1>
+          <p className="text-xs sm:text-sm text-[#6B7280] dark:text-[#9CA3AF] mt-1">
+            Direct alerts on new tenant applications, messages, and listing status.
+          </p>
+        </div>
+        {unreadCount > 0 && (
+          <button
+            onClick={markAllNotificationsAsRead}
+            className="self-start sm:self-auto px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 text-[#0E9F6E] border border-emerald-200 dark:border-emerald-800 text-xs font-bold rounded-xl cursor-pointer hover:bg-emerald-100 transition-colors flex items-center gap-1.5"
+          >
+            <CheckCheck className="w-3.5 h-3.5" />
+            <span>Mark all as read</span>
+          </button>
+        )}
       </div>
 
       <div className="bg-white dark:bg-[#161D2A] rounded-3xl border border-black/[0.06] dark:border-white/[0.08] shadow-2xs overflow-hidden">

@@ -52,7 +52,7 @@ export const SignupLandlordView: React.FC = () => {
     <div className="min-h-screen bg-[#FAFAF8] dark:bg-[#0B0F17] flex flex-col justify-center py-12 sm:px-6 lg:px-8 transition-colors">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
-          <SmartRentLogo className="w-10 h-10" />
+          <SmartRentLogo variant="icon-only" size="md" />
           <span className="font-extrabold text-2xl tracking-tight text-[#102A43] dark:text-white">
             Smart<span className="text-[#0E9F6E]">Rent</span>
           </span>

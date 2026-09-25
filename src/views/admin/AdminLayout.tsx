@@ -57,8 +57,8 @@ export const AdminLayout: React.FC = () => {
       <aside className="w-full md:w-64 bg-white dark:bg-[#161D2A] border-r border-black/[0.08] dark:border-white/[0.08] flex flex-col shrink-0 md:h-screen md:sticky md:top-0 z-30 transition-colors">
         {/* Brand Header */}
         <div className="p-6 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
-          <Link to="/admin/dashboard" className="flex items-center gap-3">
-            <SmartRentLogo className="w-8 h-8" />
+          <Link to="/admin/dashboard" className="flex items-center gap-2.5">
+            <SmartRentLogo variant="icon-only" size="sm" />
             <div>
               <div className="font-extrabold text-base tracking-tight text-[#102A43] dark:text-white leading-none">
                 Smart<span className="text-[#0E9F6E]">Rent</span>

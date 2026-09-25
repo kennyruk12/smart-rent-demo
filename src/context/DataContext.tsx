@@ -53,6 +53,9 @@ interface DataContextType {
   updateReportStatus: (id: string, status: 'Pending' | 'Resolved' | 'Dismissed') => void;
   updatePlatformNotice: (text: string, enabled: boolean) => void;
   markNotificationAsRead: (id: string) => void;
+  markAllNotificationsAsRead: () => void;
+  markConversationAsRead: (conversationId: string) => void;
+  markAllConversationsAsRead: () => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -417,6 +420,35 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
+  const markAllNotificationsAsRead = () => {
+    setNotifications((prev) =>
+      prev.map((n) => ({ ...n, read: true }))
+    );
+  };
+
+  const markConversationAsRead = (conversationId: string) => {
+    setConversations((prev) =>
+      prev.map((conv) => {
+        if (conv.id !== conversationId) return conv;
+        return {
+          ...conv,
+          unreadCount: 0,
+          messages: conv.messages.map((m) => ({ ...m, read: true }))
+        };
+      })
+    );
+  };
+
+  const markAllConversationsAsRead = () => {
+    setConversations((prev) =>
+      prev.map((conv) => ({
+        ...conv,
+        unreadCount: 0,
+        messages: conv.messages.map((m) => ({ ...m, read: true }))
+      }))
+    );
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -444,7 +476,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         createReport,
         updateReportStatus,
         updatePlatformNotice,
-        markNotificationAsRead
+        markNotificationAsRead,
+        markAllNotificationsAsRead,
+        markConversationAsRead,
+        markAllConversationsAsRead
       }}
     >
       {children}
