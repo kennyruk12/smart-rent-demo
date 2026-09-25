@@ -1,0 +1,7 @@
+{
+  "name": "Smart Rent - Rwandan Rental Marketplace",
+  "description": "Find a place. Feel at home. Discover verified homes and apartments across Rwanda and connect directly with landlords for free.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

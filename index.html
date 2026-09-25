@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Rent | Find a place. Feel at home.</title>
+    <meta name="description" content="Discover homes and apartments across Rwanda and connect directly with verified landlords. Free property listing for Rwandan landlords." />
+    <meta property="og:title" content="Smart Rent - Rwandan Rental Marketplace" />
+    <meta property="og:description" content="Find a place. Feel at home. Verified rental homes across Kigali, Musanze, Rubavu, and Rwanda." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M8 22 L24 9 L40 22 L36 22 L36 34 L12 34 L12 22 Z' fill='%23102A43'/%3E%3Crect x='31' y='11' width='4' height='7' fill='%23102A43'/%3E%3Crect x='19' y='18' width='4' height='4' rx='0.5' fill='white'/%3E%3Crect x='25' y='18' width='4' height='4' rx='0.5' fill='white'/%3E%3Crect x='19' y='24' width='4' height='4' rx='0.5' fill='white'/%3E%3Crect x='25' y='24' width='4' height='4' rx='0.5' fill='white'/%3E%3Cpath d='M6 35 C14 31 28 32 42 27 C34 33 22 37 6 35 Z' fill='%230E9F6E'/%3E%3C/svg%3E" />
+    <script>
+      // Gracefully prevent injected browser extensions (MetaMask, Phantom, Web3 wallets, etc.)
+      // from throwing unhandled rejection errors inside iframe sandbox environments
+      (function() {
+        var isExtensionError = function(msg, file) {
+          var str = String(msg || '').toLowerCase();
+          var f = String(file || '').toLowerCase();
+          return (
+            str.indexOf('metamask') !== -1 ||
+            str.indexOf('ethereum') !== -1 ||
+            str.indexOf('wallet') !== -1 ||
+            str.indexOf('web3') !== -1 ||
+            f.indexOf('chrome-extension://') !== -1 ||
+            f.indexOf('moz-extension://') !== -1 ||
+            f.indexOf('safari-extension://') !== -1
+          );
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event.reason;
+          var msg = (reason && (reason.message || reason.stack || reason.toString())) || '';
+          if (isExtensionError(msg, '')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          var msg = event.message || '';
+          var file = event.filename || '';
+          if (isExtensionError(msg, file)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body class="bg-[#FAFAF8] text-[#1C1C1E] font-['Plus_Jakarta_Sans',-apple-system,BlinkMacSystemFont,'SF_Pro_Display','Inter',sans-serif] antialiased selection:bg-[#0E9F6E]/20 selection:text-[#102A43]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
